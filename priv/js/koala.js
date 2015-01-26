@@ -118,7 +118,7 @@
                 return this;
         }
         KMsg.prototype = {
-                constructor: Koala,
+                constructor: KMsg,
                 cast: function () {
                         this._owner._ws.send(JSON.stringify({
                                 id: generateUUID(),
