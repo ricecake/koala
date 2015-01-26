@@ -1,10 +1,10 @@
 -module(koala_msg_handler).
 
--export([init/3]).
+-export([init/2]).
 -export([websocket_handle/3]).
 -export([websocket_info/3]).
 
-init({tcp, http}, Req, _Opts) ->
+init(Req, _Opts) ->
         io:format("StartedA\n"),
 	{cowboy_websocket, Req, #{}}.
 
