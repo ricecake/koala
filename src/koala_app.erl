@@ -20,7 +20,7 @@ start(_StartType, _StartArgs) ->
   			{"/",          cowboy_static, {priv_file, koala, "html/index.html"}}
 		]}
 	]),
-	{ok, _} = cowboy:start_http(http, 25, [{port, 7221}],
+	{ok, _} = cowboy:start_http(http, 25, [{port, 7221}, {compress, true}],
         				[{env, [{dispatch, Dispatch}]}]),
 	Supervisor.
 
