@@ -109,8 +109,8 @@
                 identity: {},
                 timeout: 10000,
                 onTimeout: function (Msg) { throw {what: 'timeout', message: Msg}},
-                context: 'system',
-                namespace: 'control',
+                context: 'control',
+                namespace: 'system',
                 method: 'info'
         };
         function KMsg(args) {
