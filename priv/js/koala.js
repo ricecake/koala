@@ -72,9 +72,9 @@
                         this._ws = ws;
                         return this;
                 },
-                call: function (Message) {
+                Call: function (Message) {
                 },
-                cast: function (Message) {
+                Cast: function (Message) {
                 },
                 onConnect: function (Callback) {
                       this._onConnect = Callback;  
