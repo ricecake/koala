@@ -119,6 +119,17 @@
         }
         KMsg.prototype = {
                 constructor: KMsg,
+               Call: function () {
+                	//need to make this return a promise, and get that all worked out
+                        this._owner._ws.send(JSON.stringify({
+                                id: generateUUID(),
+                                identity: this._identity,
+                                context: this._context,
+                                namespace: this._context,
+                                method: this._method,
+                                body: this._body,
+                        }));
+                },
                 cast: function () {
                 	//need to make this return a promise, and get that all worked out
                         this._owner._ws.send(JSON.stringify({
