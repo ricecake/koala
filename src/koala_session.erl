@@ -25,5 +25,5 @@ start_link() ->
 init([]) ->
     {ok, { {simple_one_for_one, 5, 10}, [
         ?CHILD(koala_session_srv),
-        ?CHILD(koala_msg_srv)
+        ?CHILD(koala_session_msg)
     ]} }.
