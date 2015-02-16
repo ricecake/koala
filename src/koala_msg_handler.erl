@@ -5,7 +5,8 @@
 -export([websocket_info/3]).
 
 init(Req, _Opts) ->
-	{cowboy_websocket, Req, #{}}.
+         State = initSession(Req, #{}),
+	{cowboy_websocket, Req, State}.
 
 websocket_handle({text, JSON} = Data, Req, State) ->
 	Message = jiffy:decode(JSON, [return_maps]),
