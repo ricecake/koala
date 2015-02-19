@@ -34,6 +34,7 @@
         }
 
         function extractArgs (This, Defaults, Args) {
+        	// should switch this to use _ instead of rolling own
                 Args = Args || {};
                 for (var k in Defaults) {
                         if (Args[k]) {
@@ -95,8 +96,8 @@
                         Args.owner = this;
                         return new KMsg(Args);
                 },
-                insertMessage: function (id, msg, Data) {
-                        this._messages[id] = { message: msg, data: Data};
+                insertMessage: function (id, msg, after) {
+                        this._messages[id] = { message: msg, after: after};
                         return this;
                 }
         };
@@ -121,17 +122,19 @@
                 constructor: KMsg,
                Call: function () {
                 	//need to make this return a promise, and get that all worked out
-                        this._owner._ws.send(JSON.stringify({
-                                id: generateUUID(),
+                	var Id = generateUUID();
+                	var Msg = JSON.stringify({
+                                id: Id,
                                 identity: this._identity,
                                 context: this._context,
                                 namespace: this._context,
                                 method: this._method,
                                 body: this._body,
-                        }));
+                        });
+                        this._owner.insertMessage(Id, this, function(Message){});
+                        this._owner._ws.send(Msg);
                 },
                 Cast: function () {
-                	//need to make this return a promise, and get that all worked out
                         this._owner._ws.send(JSON.stringify({
                                 id: generateUUID(),
                                 identity: this._identity,
