@@ -52,16 +52,15 @@
         }
         
 
-        var KoalaArgs = {
-                onCall: function () { return this },
-                onCast: function () { return this },
-                onTerm: function () { return this },
-                onError:function () { return this },
-                onConnect: function () { return this },
-                rejoin: 1000
-        };
         function Koala(args) {
-                extractArgs(this, KoalaArgs, args);
+                extractArgs(this, {
+	                onCall: function () { return this },
+	                onCast: function () { return this },
+	                onTerm: function () { return this },
+	                onError:function () { return this },
+	                onConnect: function () { return this },
+	                rejoin: 1000
+	        }, args);
                 this._ws = initWs(this);
                 
                 this._messages = {};
@@ -104,18 +103,18 @@
         window.Koala = Koala;
 
 
-        var KMsgArgs = {
-                owner: undefined,
-                body: undefined,
-                identity: {},
-                timeout: 10000,
-                onTimeout: function (Msg) { throw {what: 'timeout', message: Msg}},
-                context: 'control',
-                namespace: 'system',
-                method: 'info'
-        };
+        var KMsgArgs = ;
         function KMsg(args) {
-                extractArgs(this, KMsgArgs, args);
+                extractArgs(this, {
+	                owner: undefined,
+	                body: undefined,
+	                identity: {},
+	                timeout: 10000,
+	                onTimeout: function (Msg) { throw {what: 'timeout', message: Msg}},
+	                context: 'control',
+	                namespace: 'system',
+	                method: 'info'
+	        }, args);
                 return this;
         }
         KMsg.prototype = {
