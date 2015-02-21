@@ -135,7 +135,6 @@
                 },
                 Cast: function () {
                         this._owner._ws.send(JSON.stringify({
-                                id: generateUUID(),
                                 identity: this._identity,
                                 context: this._context,
                                 namespace: this._context,
