@@ -20,3 +20,5 @@ websocket_info(Message, Req, State) ->
 	{reply, Message, Req, State}.
 
 handle_client_task(_JSON, State) -> {ok, State}.
+
+initsession(req, state) -> state.
