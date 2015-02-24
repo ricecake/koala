@@ -5,7 +5,7 @@
 -export([websocket_info/3]).
 
 init(Req, _Opts) ->
-         State = initSession(Req, #{}),
+        {ok, State} = initSession(Req, #{}),
 	{cowboy_websocket, Req, State}.
 
 websocket_handle({text, JSON} = Data, Req, State) ->
@@ -21,4 +21,4 @@ websocket_info(Message, Req, State) ->
 
 handle_client_task(_JSON, State) -> {ok, State}.
 
-initsession(req, state) -> state.
+initsession(Req, State) -> {ok, State}.
